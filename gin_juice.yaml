@@ -100,8 +100,8 @@ jobs:
     name: "activeScan"
     type: "activeScan"
   - parameters:
-      template: "risk-confidence-html"
-      reportDir: "C:\\Users\\joaor"
+      template: "tradeitional-pdf"
+      reportDir: "C:\\Users\\MarkFe"
       reportTitle: "ZAP Scanning Report"
       reportDescription: ""
     name: "report"
