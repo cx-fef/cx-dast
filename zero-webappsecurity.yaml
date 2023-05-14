@@ -94,10 +94,27 @@ jobs:
   name: "activeScan"
   type: "activeScan"
 - parameters:
-    template: "risk-confidence-html"
+    template: "traditional-pdf"
     reportDir: "C:\\Users\\MarkFe"
+    reportFile: ""
     reportTitle: "ZAP Scanning Report"
     reportDescription: ""
+    displayReport: false
+  risks:
+  - "info"
+  - "low"
+  - "medium"
+  - "high"
+  confidences:
+  - "falsepositive"
+  - "low"
+  - "medium"
+  - "high"
+  - "confirmed"
+  sections:
+  - "instancecount"
+  - "alertdetails"
+  - "alertcount"
   name: "report"
   type: "report"
 
