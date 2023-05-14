@@ -6,14 +6,29 @@ env:
     includePaths: []
     excludePaths: []
     authentication:
-      parameters: {}
-      verification:
-        method: "response"
-        pollFrequency: 60
-        pollUnits: "requests"
-    sessionManagement:
-      method: "cookie"
-      parameters: {}
+      method: "form"
+        parameters:
+          loginPageUrl: "http://zero.webappsecurity.com/login.html"
+          loginRequestUrl: "http://zero.webappsecurity.com/login.html"
+          loginRequestBody: "username={%username%}&password={%password%}"
+        verification:
+          method: "poll"
+          loggedInRegex: "Log out"
+          loggedOutRegex: "Log in"
+          pollFrequency: 60
+          pollUnits: "requests"
+          pollUrl: "http://zero.webappsecurity.com/bank/account-summary.html"
+          pollPostData: ""
+      sessionManagement:
+        method: "cookie"
+        parameters: {}
+      technology:
+        exclude: []
+      users:
+        - name: "carlos"
+          credentials:
+            password: "password"
+            username: "username"
   parameters:
     failOnError: true
     failOnWarning: false
