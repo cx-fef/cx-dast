@@ -37,7 +37,7 @@ jobs:
         config: './zero-webappsecurity.yaml'
         # openapi: file here
         base_url: "https://deu.ast.checkmarx.net"
-        environment_id: "344bce1f-ddb1-4129-ad61-c614f4cdc346"
+        environment_id: "f96d8473-aaba-41ba-9753-88fcaf165304"
         fail_on: "HIGH"
         verbose: true
         output: ./output
