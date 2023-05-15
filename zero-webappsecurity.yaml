@@ -2,16 +2,14 @@
 env:
   contexts:
   - name: "Default Context"
-    urls:
-    - "http://zero.webappsecurity.com"
-    includePaths:
-    - "http://zero.webappsecurity.com.*"
+    urls: ["http://zero.webappsecurity.com"]
+    includePaths: []
     excludePaths: []
     authentication:
       method: "form"
       parameters:
-        loginPageUrl: "http://zero.webappsecurity.com/signin.html"
-        loginRequestUrl: "http://zero.webappsecurity.com/signin.html"
+        loginPageUrl: "http://zero.webappsecurity.com/login.html"
+        loginRequestUrl: "http://zero.webappsecurity.com/login.html"
         loginRequestBody: "user_login={%username%}&user_password={%password%}&submit=Sign+in&user_token=64c2bd64-2277-4460-9130-0f5c099c09ea"
       verification:
         method: "response"
@@ -36,71 +34,44 @@ env:
   vars: {}
 jobs:
 - parameters:
-    maxAlertsPerRule: 0
     scanOnlyInScope: true
-    maxBodySizeInBytesToScan: 0
     enableTags: false
   rules: []
   name: "passiveScan-config"
   type: "passiveScan-config"
-- parameters:
-    context: "Default Context"
-    user: "username"
-    url: "http://zero.webappsecurity.com/login.html"
-    maxDuration: 10
-    maxDepth: 0
-    maxChildren: 0
-    acceptCookies: false
-    handleODataParametersVisited: false
-    handleParameters: "IGNORE_COMPLETELY"
-    maxParseSizeBytes: 0
-    parseComments: false
-    parseGit: false
-    parseRobotsTxt: false
-    parseSitemapXml: false
-    parseSVNEntries: false
-    postForm: false
-    processForm: false
-    requestWaitTime: 0
-    sendRefererHeader: false
-    userAgent: ""
+- parameters: {}
+  tests:
+  - onFail: "INFO"
+    statistic: "automation.spider.urls.added"
+    #site: ""
+    operator: ">="
+    value: 1
+    type: "stats"
+    name: "At least 1 URL found"
   name: "spider"
   type: "spider"
-- parameters:
-    context: "Default Context"
-    user: "username"
-    url: "http://zero.webappsecurity.com/login.html"
-    maxDuration: 60
-    maxCrawlDepth: 10
-    numberOfBrowsers: 16
-    runOnlyIfModern: false
+- parameters: {}
+  tests:
+  - onFail: "INFO"
+    statistic: "spiderAjax.urls.added"
+    #site: ""
+    operator: ">="
+    value: 1
+    type: "stats"
+    name: "At least 1 URL found"
   name: "spiderAjax"
   type: "spiderAjax"
 - parameters: {}
   name: "passiveScan-wait"
   type: "passiveScan-wait"
-- parameters:
-    context: "Default Context"
-    user: "username"
-    policy: ""
-    maxRuleDurationInMins: 0
-    maxScanDurationInMins: 0
-    addQueryParam: false
-    delayInMs: 0
-    handleAntiCSRFTokens: false
-    injectPluginIdInHeader: false
-    scanHeadersAllRequests: false
-    threadPerHost: 5
+- parameters: {}
   policyDefinition:
-    defaultStrength: "medium"
-    defaultThreshold: "medium"
     rules: []
   name: "activeScan"
   type: "activeScan"
 - parameters:
     template: "traditional-pdf"
-    reportDir: "C:\\Users\\MarkFe"
-    reportFile: ""
+    reportDir: "C:\\ZAP CLI\\Reports"
     reportTitle: "ZAP Scanning Report"
     reportDescription: ""
   name: "report"
