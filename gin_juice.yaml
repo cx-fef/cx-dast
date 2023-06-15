@@ -101,7 +101,7 @@ jobs:
     type: "activeScan"
   - parameters:
       template: "tradeitional-pdf"
-      reportDir: "C:\\Users\\MarkFe"
+      reportDir: "C:\\ZAP CLI\\Reports"
       reportTitle: "ZAP Scanning Report"
       reportDescription: ""
     name: "report"
